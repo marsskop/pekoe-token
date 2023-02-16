@@ -36,7 +36,9 @@ jobs:
         python-version: 3.8
 
     - name: Install Requirements
-      run: pip install -r requirements.txt
+      run: |
+        pip install -r requirements.txt
+        brownie pm install OpenZeppelin/openzeppelin-contracts@4.8.1
 
     - name: Run Tests
       run: brownie test -C
