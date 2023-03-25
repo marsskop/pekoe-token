@@ -1,5 +1,7 @@
 # PekoeToken repo
-Independent repo with Pekoe Tokens for PekoeTips service.
+⚠️ **WIP**
+
+Independent repo with Pekoe Tokens for 🌿**PEKOE**🌿 tips service.
 
 ### Specs
 - Solidity, ERC20 token
