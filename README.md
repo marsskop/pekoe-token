@@ -119,3 +119,15 @@ web3.fromWei(account.balance(), 'ether')
 brownie run deploy.py --network sepolia
 ```
 - check out deployed contract on https://sepolia.etherscan.io/ using contract address
+
+### Interact with contract in Sepolia
+```
+brownie console --network sepolia
+```
+```
+pekoe = Pekoe.at('0xD25bbC0E9F39D472af6F3f988C22f3481709Ed58')
+accounts.add()
+deployment_account = accounts.load('deployment_account')
+tx = pekoe.transfer(accounts[0], 1e18, {'from': deployment_account})
+```
+and check transaction on https://sepolia.etherscan.io/ using transaction address
