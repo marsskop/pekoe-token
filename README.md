@@ -6,7 +6,7 @@ Independent repo with Pekoe Tokens for 🌿**PEKOE**🌿 tips service.
 ### Specs
 - Solidity, ERC20 token
 - Brownie x Hardhat network
-- Alchemy x Goerli testnet
+- Infura x Sepolia (https://sepolia.dev/)
 
 ### Development Guide
 Brownie: https://eth-brownie.readthedocs.io/en/stable/
@@ -79,3 +79,43 @@ tx.info()
 tx.events
 tx.internal_transfers
 ```
+- working with networks
+```
+brownie networks list
+```
+
+### Deploy to Infura x Sepolia
+- set WEB3_INFURA_PROJECT_ID env variable with API key from Infura project
+- add Sepolia network
+```
+brownie networks list
+brownie networks add Ethereum sepolia host="https://rpc.sepolia.org/" chainid=11155111
+```
+- connect
+```
+brownie console --network sepolia
+```
+```
+network.show_active()
+network.is_connected()
+```
+- let's create a deployment account. check is there are any local accounts:
+```
+brownie accounts list
+```
+and create
+```
+brownie accounts generate deployment_account
+```
+- use https://sepoliafaucet.com/ to request ETH to pay gas; enter deployment-account address
+- and check balance
+```
+brownie console --network sepolia
+account = accounts.load('deployment_account')
+web3.fromWei(account.balance(), 'ether')
+```
+- finally, deploy contract
+```
+brownie run deploy.py --network sepolia
+```
+- check out deployed contract on https://sepolia.etherscan.io/ using contract address
